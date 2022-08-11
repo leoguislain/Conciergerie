@@ -5,6 +5,10 @@
     font-family: sans-serif;
 }
 
+body {
+    background-image: url('petiponey.jpeg');
+}
+
 h1,
 h2 {
     text-align: center;
@@ -18,7 +22,7 @@ form {
     height: 35px;
 }
 
-form> * {
+form>* {
     margin: 0 20px;
     padding: 5px;
     height: 100%;

@@ -15,12 +15,26 @@
     <section class="addtask">
         <h2>Ajouter une tache</h2>
         <form action="" method="get">
-            <input type="text" name="task" class="task" placeholder="Ecrivez une tache">
-            <input type="date" name="date">
-            <input type="number" name="etage" class="etages" placeholder="Etage" min="-2" max="7">
+            <input type="text" name="task" class="task" placeholder="Ecrivez une tache" required>
+            <input type="date" name="date" required>
+            <input type="number" name="etage" class="etages" placeholder="Etage" min="-2" max="7" required>
             <input type="submit" name="send " class="send">
         </form>
     </section>
+    <?php
+    include 'connect.php';
+    if(isset($_GET['send'])) {
+        if(isset($_GET['task']) & !empty($_GET['task']) & isset($_GET['date']) & !empty($_GET['date']) & isset($_GET['etage']) & !empty($_GET['etage'])) {
+            $findUser = connect()->prepare('INSERT INTO `agenda` (`task_name`, `date`, `etage`) VALUES (:task_name, :date, :etage)');
+            $findUser->bindParam(':task_name', $_GET['task'], PDO::PARAM_STR);
+            $findUser->bindParam(':date', $_GET['date'], PDO::PARAM_STR);
+            $findUser->bindParam(':etage', $_GET['etage'], PDO::PARAM_INT);
+            $findUser->execute();
+            $user = $findUser->fetch();
+        }
+    }
+
+    ?>
     <section class="contenantagenda">
         <h2>AGENDA</h2>
         <div class="agenda">
