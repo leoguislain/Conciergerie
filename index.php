@@ -39,11 +39,8 @@
         </div>
     </section>
 <?php 
-    session_start();
-    if(isset($_SESSION['nom_user'])){
-        header('Location: ./index.php');
-    }
-    else{
+    include 'connect.php';
+    if(!isset($_SESSION['nom_user'])){
         header('Location: ./login.php');
     }
 ?>
