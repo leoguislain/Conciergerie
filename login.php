@@ -9,14 +9,14 @@
 </head>
 <body>
 <main class="mainContainer">
-    <form action="login.php" class="login" method="post">
+    <form action="connect.php" class="login" method="post">
         <h1>Login</h1>
         <div class="username">
-            <label for="username">Username:</label>
+            <label for="username">Nom d'utilisateur:</label>
             <input type="text" name="username" id="username">
         </div>
         <div class="password">
-            <label for="password">Password:</label>
+            <label for="password">Mot de passe:</label>
             <input type="password" name="password" id="password">
         </div>
         <section>
