@@ -30,4 +30,19 @@ if(isset($_POST['action']) && !empty($_POST['username'])  && !empty($_POST['pass
     login();
 }
 
+
+
+$findEtage = connect()->prepare('SELECT `etage` FROM `agenda` ORDER BY `date`');
+$findEtage->execute();
+$etage = $findEtage->fetchAll();
+
+$findTask = connect()->prepare('SELECT `task_name` FROM `agenda` ORDER BY `date`');
+$findTask->execute();
+$task = $findTask->fetchAll();
+
+$findDate = connect()->prepare('SELECT `date` FROM `agenda` ORDER BY `date`');
+$findDate->execute();
+$date = $findDate->fetchAll();
+
+
 ?>
