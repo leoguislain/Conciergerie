@@ -62,10 +62,11 @@ form>* {
 
 .agenda {
     width: 90vw;
-    height: 600px;
     background-color: #ffe8fc;
     display: flex;
     border-radius: 20px;
+    min-height: 450px;
+    padding: 10px;
 }
 
 .etage,
@@ -75,7 +76,6 @@ form>* {
     height: 100%;
     display: flex;
     align-items: center;
-    padding-top: 10px;
     flex-direction: column;
 }
 
@@ -93,4 +93,15 @@ form>* {
 .tache,
 .date {
     width: 40%;
+}
+
+.delete{
+    height: 18px;
+    margin: 0 0 18px;
+}
+
+.deletebtn{
+    padding: 0;
+    font-size: 12px;
+    width: 70px;
 }

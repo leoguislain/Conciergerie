@@ -31,7 +31,7 @@
             $findUser->bindParam(':etage', $_GET['etage'], PDO::PARAM_INT);
             $findUser->execute();
             $user = $findUser->fetch();
-            // header('Location: ./index.php');
+            header('Location: ./index.php');
     }
     else {
         echo 'c pas bon';
@@ -45,9 +45,9 @@
                     ETAGE<br>
                 </p>
                     <?php
-                        for ($i=0; $i < count($etage); $i++) {
+                        for ($i=0; $i < count($datas); $i++) {
                             $index = strval($i);
-                            echo '<p>'.$etage[$index]['etage'].'</p><br>';
+                            echo '<p>'.$datas[$index]['etage'].'</p><br>';
                         }
                     ?>
             </div>
@@ -56,9 +56,9 @@
                     TACHE<br>
                 </p>
                 <?php
-                        for ($i=0; $i < count($task); $i++) {
+                        for ($i=0; $i < count($datas); $i++) {
                             $index = strval($i);
-                            echo '<p>'.$task[$index]['task_name'].'</p><br>';
+                            echo '<p>'.$datas[$index]['task_name'].'</p><br>';
                         }
                     ?>
             </div>
@@ -67,14 +67,22 @@
                     DATE<br>
                 </p>
                 <?php
-                        for ($i=0; $i < count($date); $i++) {
+                        for ($i=0; $i < count($datas); $i++) {
                             $index = strval($i);
-                            echo '<p>'.date('d/m/Y',strtotime($date[$index]['date'])).'</p><br>';
+                            echo '<p>'.date('d/m/Y',strtotime($datas[$index]['date'])).'</p><br>';
                         }
-                    ?>
+                ?>
             </div>
             <div class="suppr">
-                <p>SUPPR</p>
+                <p>
+                    SUPPR<br>
+                </p>
+                <?php
+                        for ($i=0; $i < count($datas); $i++) {
+                            $index = strval($i);
+                            echo "<form method ='get' action ='' class='delete'> <input type='submit' name='".$index."' value='Supprimer' class='deletebtn'></form>";
+                        }
+                ?>
             </div>
         </div>
     </section>

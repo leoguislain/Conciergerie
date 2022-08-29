@@ -19,7 +19,7 @@ function login(){
 
     if ($user && password_verify($_POST['password'], $user['password'])) {
         $_SESSION['nom_user'] = $user['name'];
-        header('Location: ./index.php');  
+        header('Location: ./index.php');
         
     } else {
         echo 'Invalid username or password';
@@ -31,18 +31,17 @@ if(isset($_POST['action']) && !empty($_POST['username'])  && !empty($_POST['pass
 }
 
 
+if(isset($_GET['send'])) {
+    $findData = connect()->prepare('SELECT * FROM `agenda` ORDER BY `date`');
+    $findData->execute();
+    $datas = $findData->fetchAll();
+}
+else {
+    $findData = connect()->prepare('SELECT * FROM `agenda` ORDER BY `date`');
+    $findData->execute();
+    $datas = $findData->fetchAll();
+}
 
-$findEtage = connect()->prepare('SELECT `etage` FROM `agenda` ORDER BY `date`');
-$findEtage->execute();
-$etage = $findEtage->fetchAll();
-
-$findTask = connect()->prepare('SELECT `task_name` FROM `agenda` ORDER BY `date`');
-$findTask->execute();
-$task = $findTask->fetchAll();
-
-$findDate = connect()->prepare('SELECT `date` FROM `agenda` ORDER BY `date`');
-$findDate->execute();
-$date = $findDate->fetchAll();
 
 
 ?>
