@@ -4,44 +4,51 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
-
-.mainContainer {
+body{
+    background-image: url('geom.jpeg');
+    background-size: cover;
+}
+h1,h2 {
+    text-align: center;
+    margin: 25px;
+    font-family: 'Aboreto';
+}
+.mainContainer{
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    
 }
-
-.login {
+.login{
     width: 500px;
     height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border-radius: 20px;
     border: solid 2px black;
-    background-color: #ffdefa;
+    background-color: #efe9e0d6;
+    border-radius: 5px;
+    backdrop-filter: blur(8px);
 }
-
-.btn {
+.btn{
     margin-top: 20px;
-    background-color: #E9DDDD;
+    background-color: #efe9e0;
     width: 120px;
     height: 30px;
-    border-radius: 12px;
+    border-radius:12px;
+    transition: 0.6s;
 }
-
-.username,
-.password {
-    margin: 10px;
+.btn:hover{
+    background-color: #f8a390;
+    transition: 0.6s;
+}
+.username,.password {
+    margin:10px;
     width: 63%;
     display: flex;
     justify-content: space-between;
-}
-
-body {
-    background-image: url('petiponey.jpeg');
 }

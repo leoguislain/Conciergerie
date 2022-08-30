@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
     <title>Conciergerie</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,19 +15,19 @@
 <body>
     <h1>Conciergerie</h1>
     <a href="./logout.php" class="logout">Se déconnecter</a>
-    <section class="addtask">
+    <section>
         <h2>Ajouter une tache</h2>
-        <form action="" method="get">
-            <input type="text" name="task" class="task" placeholder="Ecrivez une tache" required>
-            <input type="date" name="date" required>
+        <form action="" method="get" class="addtask">
+            <input type="text" name="task" class="task" placeholder="Ecrivez une tache"require>
+            <input type="date" name="date"require>
             <input type="number" name="etage" class="etages" placeholder="Etage" min="-2" max="7" required>
             <input type="submit" name="send" class="send">
         </form>
     </section>
-<?php
+    <?php
     include 'connect.php';
-    if(isset($_GET['send']) & isset($_GET['task']) & !empty($_GET['task']) & isset($_GET['date']) & !empty($_GET['date']) & isset($_GET['etage']) & !empty($_GET['etage'])) {
-        echo 'C bon';
+    if(isset($_GET['send'])) {
+        if(isset($_GET['task'])&!empty($_GET['task'])&isset($_GET['date'])&!empty($_GET['date'])&isset($_GET['etage'])&!empty($_GET['etage'])){
             $findUser = connect()->prepare('INSERT INTO `agenda` (`task_name`, `date`, `etage`) VALUES (:task_name, :date, :etage)');
             $findUser->bindParam(':task_name', $_GET['task'], PDO::PARAM_STR);
             $findUser->bindParam(':date', $_GET['date'], PDO::PARAM_STR);
@@ -32,61 +35,54 @@
             $findUser->execute();
             $user = $findUser->fetch();
             header('Location: ./index.php');
-    }
-    else {
-        echo 'c pas bon';
-    }
+    }}
 ?>
     <section class="contenantagenda">
         <h2>AGENDA</h2>
         <div class="agenda">
             <div class="etage">
-                <p>
-                    ETAGE<br>
-                </p>
-                    <?php
-                        for ($i=0; $i < count($datas); $i++) {
-                            $index = strval($i);
-                            echo '<p>'.$datas[$index]['etage'].'</p><br>';
-                        }
-                    ?>
+                <h2>ETAGE <br/></h2>
+                <?php
+                    for ($i=0; $i < count($datas); $i++) {
+                        $index = strval($i);
+                        echo '<p>'.$datas[$index]['etage'].'</p><br>';
+                    }
+                ?>
             </div>
             <div class="tache">
-                <p>
-                    TACHE<br>
-                </p>
+                <h2>TACHE</h2>
                 <?php
-                        for ($i=0; $i < count($datas); $i++) {
-                            $index = strval($i);
-                            echo '<p>'.$datas[$index]['task_name'].'</p><br>';
-                        }
-                    ?>
+                    for ($i=0; $i < count($datas); $i++) { 
+                        $index = strval($i);
+                        echo '<p>'.$datas[$index]['task_name'].'</p><br/>';
+                    }
+                ?>
             </div>
             <div class="date">
-                <p>
-                    DATE<br>
-                </p>
+                <h2>DATE</h2>
                 <?php
-                        for ($i=0; $i < count($datas); $i++) {
-                            $index = strval($i);
-                            echo '<p>'.date('d/m/Y',strtotime($datas[$index]['date'])).'</p><br>';
-                        }
-                ?>
+                    for ($i=0; $i < count($datas); $i++) { 
+                        $index = strval($i);
+                        echo '<p>'.date('d/m/Y',strtotime($datas[$index]['date'])).'</p><br>';
+                    }
+                    ?>
             </div>
             <div class="suppr">
-                <p>
-                    SUPPR<br>
-                </p>
+            <form method='get'action='' class='deletebtn'>
+                <h2>SUPPR</h2>
                 <?php
-                        for ($i=0; $i < count($datas); $i++) {
-                            $index = strval($i);
-                            echo "<form method ='get' action ='' class='delete'> <input type='submit' name='".$index."' value='Supprimer' class='deletebtn'></form>";
-                        }
+                for ($i=0; $i <count($datas) ; $i++) { 
+                  $index = strval($i);
+                  echo '<a href="?supp='.$datas[$index]['id'].'">supprimer</a>';
+                  echo "<input type='submit' name='suppr' value='".$datas[$index]['id']."'><br>";
+                }
                 ?>
+            </form>
             </div>
         </div>
     </section>
 <?php 
+   
     if(!isset($_SESSION['nom_user'])){
         header('Location: ./login.php');
     }

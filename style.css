@@ -4,46 +4,49 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
-
-body {
-    background-image: url('petiponey.jpeg');
+body{
+    background-image: url('geom.jpeg');
+    background-size: cover;
 }
-
-h1,
-h2 {
+h1,h2 {
     text-align: center;
-    margin: 25px;
+    margin: 25px 0;
+    font-family: 'Aboreto';
+}
+a{
+    transition: 0.6s;
+    font-family: 'Aboreto';
+    font-size:18px ;
+}
+a:hover{
+    color:#F15F44;
+    transition: 0.6s;
 }
 
-form {
+.addtask {
     display: flex;
     justify-content: center;
     margin-top: 50px;
     height: 35px;
 }
-
-form>* {
+.addtask> * {
     margin: 0 20px;
     padding: 5px;
     height: 100%;
-    border-radius: 30px;
+    border-radius: 5px;
     border: solid 1px black;
-    background-color: #E9DDDD;
+    background-color: #efe9e0;
 }
-
 .send {
     padding: 0 15px;
 }
-
 .task {
     width: 300px;
 }
-
 .etages {
     width: 80px;
     text-align: center;
 }
-
 .logout {
     position: absolute;
     top: 10px;
@@ -52,56 +55,51 @@ form>* {
     text-decoration: none;
     font-weight: bold;
 }
-
 .contenantagenda {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-
 .agenda {
     width: 90vw;
-    background-color: #ffe8fc;
+    min-height: 400px;
+    background-color: #efe9e0d4;
     display: flex;
     border-radius: 20px;
-    min-height: 450px;
-    padding: 10px;
+    border: 1px solid black;
+    backdrop-filter: blur(8px);
 }
-
-.etage,
-.tache,
-.date,
-.suppr {
+.etage,.tache,.date,.suppr {
     height: 100%;
     display: flex;
     align-items: center;
+    padding-top: 10px;
     flex-direction: column;
 }
-
-.etage,
-.tache,
-.date {
+.etage,.tache,.date {
     border-right: 1px solid black;
 }
-
-.etage,
-.suppr {
+.etage,.suppr {
     width: 10%;
 }
-
-.tache,
-.date {
+.tache,.date {
     width: 40%;
 }
-
-.delete{
+.suppr>form{
+    flex-direction: column;
+    transition: 0.6s;
+}
+.suppr>form>input:hover{
+    background-color: #f8a390;
+    transition: 0.6s;
+}
+.suppr>form>input{
     height: 18px;
-    margin: 0 0 18px;
 }
 
 .deletebtn{
-    padding: 0;
-    font-size: 12px;
-    width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
