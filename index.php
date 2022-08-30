@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Aboreto&display=swap" rel="stylesheet">
     <title>Conciergerie</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/5131dc2a93.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -69,14 +70,14 @@
             </div>
             <div class="suppr">
             <form method='get'action='' class='deletebtn'>
-                <h2>SUPPR</h2>
+                <h2>MODIFS</h2>
                 <?php
                 for ($i=0; $i <count($datas) ; $i++) { 
                   $index = strval($i);
-                  echo '<a href="?supp='.$datas[$index]['id'].'">supprimer</a>';
-                  echo "<input type='submit' name='suppr' value='".$datas[$index]['id']."'><br>";
+                  echo '<div class="btns"><a class="btnmodify" href="?modify='.$datas[$index]['id'].'"><i class="fa-solid fa-pen"></i></a><a class="crossdelete" href="?supp='.$datas[$index]['id'].'"><i class="fa-solid fa-xmark"></i></a></div><br>';
                 }
                 ?>
+
             </form>
             </div>
         </div>
@@ -87,6 +88,19 @@
         header('Location: ./login.php');
     }
 ?>
+
+<!-- <section class="modal">
+    <a href="index.php">
+        <i class="fa-solid fa-xmark croixModal"></i>
+    </a>
+    <form action="" method="get" class="modifytask">
+        <h2>Modification</h2>
+            <input type="text" name="task" class="task" required>
+            <input type="date" name="date"required>
+            <input type="number" name="etage" class="etages" placeholder="Etage" min="-2" max="7" required>
+            <input type="submit" name="send" class="send" value="Modifier">
+    </form>
+</section> -->
 </body>
 
 </html>
