@@ -70,7 +70,7 @@
             </div>
             <div class="suppr">
             <form method='get'action='' class='deletebtn'>
-                <h2>MODIFS</h2>
+                <h2>ACTIONS</h2>
                 <?php
                 for ($i=0; $i <count($datas) ; $i++) { 
                   $index = strval($i);
