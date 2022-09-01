@@ -26,16 +26,12 @@ function login(){
 if(isset($_POST['action']) && !empty($_POST['username'])  && !empty($_POST['password'])  && $_POST['action']=="login"){
     login();
 }
-if(isset($_GET['send'])) {
+
+// select all tasks
     $findData = connect()->prepare('SELECT * FROM agenda ORDER BY date');
     $findData->execute();
     $datas = $findData->fetchAll();
-}
-else {
-    $findData = connect()->prepare('SELECT * FROM agenda ORDER BY date');
-    $findData->execute();
-    $datas = $findData->fetchAll();
-}
+
 
 if(isset($_GET['supp'])) {
     $idtask = $_GET['supp'];
@@ -45,7 +41,7 @@ if(isset($_GET['supp'])) {
 function delete() {
     $deleteTask = connect()->prepare("DELETE FROM agenda WHERE id='".$_GET['supp']."'");
     $deleteTask->execute();
-    header('Location: ./index.php');  
+    header('Location: ./index.php');
 }
 
 if(isset($_GET['modify'])) {

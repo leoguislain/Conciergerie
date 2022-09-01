@@ -25,7 +25,8 @@
             <input type="submit" name="send" class="send">
         </form>
     </section>
-    <?php
+<?php
+    // insert new task
     include 'connect.php';
     if(isset($_GET['send'])) {
         if(isset($_GET['task'])&!empty($_GET['task'])&isset($_GET['date'])&!empty($_GET['date'])&isset($_GET['etage'])&!empty($_GET['etage'])){
@@ -45,8 +46,8 @@
                 <h2>ETAGE <br/></h2>
                 <?php
                     for ($i=0; $i < count($datas); $i++) {
-                        $index = strval($i);
-                        echo '<p>'.$datas[$index]['etage'].'</p><br>';
+                        // $index = strval($i);
+                        echo '<p>'.$datas[$i]['etage'].'</p><br>';
                     }
                 ?>
             </div>
